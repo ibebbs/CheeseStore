@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  cheesestore.graph:
+    image: ${DOCKER_REGISTRY-}cheesestoregraph
+    build:
+      context: .
+      dockerfile: CheeseStore.Graph/Dockerfile
+
+  cheesestore.store:
+    image: ${DOCKER_REGISTRY-}cheesestorestore
+    build:
+      context: .
+      dockerfile: CheeseStore.Store/Dockerfile
+
+
+  cheesestore.inventory:
+    image: ${DOCKER_REGISTRY-}cheesestoreinventory
+    build:
+      context: .
+      dockerfile: CheeseStore.Inventory/Dockerfile
+
