@@ -7,6 +7,7 @@ using HotChocolate;
 using HotChocolate.Resolvers;
 using System;
 using HotChocolate.DataLoader;
+using Microsoft.Extensions.Options;
 
 namespace CheeseStore.Graph
 {
@@ -22,19 +23,19 @@ namespace CheeseStore.Graph
             // enable InMemory messaging services for subscription support.
             // services.AddInMemorySubscriptionProvider();
 
+            services.AddHttpClient<CheeseStore.Store.Client.IStoreClient, CheeseStore.Store.Client.StoreClient>(
+                (serviceProvider, httpClient) => httpClient.BaseAddress = serviceProvider.GetRequiredService<IOptions<Store.Configuration>>().Value.BaseAddress
+            );
+
+            services.AddHttpClient<CheeseStore.Inventory.Client.IInventoryClient, CheeseStore.Inventory.Client.InventoryClient>(
+                (serviceProvider, httpClient) => httpClient.BaseAddress = serviceProvider.GetRequiredService<IOptions<Inventory.Configuration>>().Value.BaseAddress
+            );
+
             // this enables you to use DataLoader in your resolvers.
             services.AddDataLoaderRegistry();
 
             // Add GraphQL Services
-            services.AddGraphQL(SchemaBuilder.New()
-                // enable for authorization support
-                // .AddAuthorizeDirectiveType()
-                .AddQueryType<Query>(
-                    query => query.Field(f => f.Cheese()).Resolver(context => context.Service<Store.IService>().Cheeses()))
-                .AddObjectType<Cheese>(
-                    cheese => cheese.Field(f => f.Available).Resolver(context => context.BatchDataLoader<Guid, uint>("availableById", context.Service<Inventory.IService>().GetInventory)))
-
-                .ModifyOptions(o => o.RemoveUnreachableTypes = true));
+            services.AddGraphQL(Schema.Build());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

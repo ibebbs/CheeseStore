@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -6,10 +6,30 @@
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
     <UserSecretsId>726f14d9-d441-44fd-af61-5a8d4da621e1</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.10" />
+    <Content Remove="nswag.json" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Include="nswag.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.10" />
+    <PackageReference Include="NSwag.MSBuild" Version="13.2.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc5" />
+  </ItemGroup>
+
+  <Target Name="NSwag" AfterTargets="Build">
+    <Copy SourceFiles="@(ReferencePath)" DestinationFolder="$(OutDir)References" />
+    <Exec Command="$(NSwagExe_Core31) run nswag.json /variables:Configuration=$(Configuration),OutDir=$(OutDir),Target=$(SolutionDir)CheeseStore.Inventory.Client" />
+    <RemoveDir Directories="$(OutDir)References" />
+  </Target>
 
 </Project>

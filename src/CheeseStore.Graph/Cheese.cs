@@ -24,6 +24,6 @@ namespace CheeseStore.Graph
 
         public decimal Price { get; set; }
 
-        public uint Available { get; set; }
+        public int Available { get; set; }
     }
 }

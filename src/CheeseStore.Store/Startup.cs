@@ -36,7 +36,7 @@ namespace CheeseStore.Store
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             
             app.UseSwagger();
 

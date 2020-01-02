@@ -11,6 +11,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheeseStore.Inventory", "Ch
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{A1B8DFFB-F9C5-49B5-9F18-D1FD904344F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheeseStore.Store.Client", "CheeseStore.Store.Client\CheeseStore.Store.Client.csproj", "{0F2748EC-3204-4DBC-9F53-87F49A01852B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{964EE96E-9609-449F-924C-16B979104006} = {964EE96E-9609-449F-924C-16B979104006}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository", "Repository", "{1DA93AEF-8A09-4422-8B81-EA86E78FD92E}"
+	ProjectSection(SolutionItems) = preProject
+		..\ReadMe.md = ..\ReadMe.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheeseStore.Inventory.Client", "CheeseStore.Inventory.Client\CheeseStore.Inventory.Client.csproj", "{73DDC0CE-2402-49E2-B447-55942E670921}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4E733090-2BCD-4865-B7EE-786E7E574B64} = {4E733090-2BCD-4865-B7EE-786E7E574B64}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +84,30 @@ Global
 		{A1B8DFFB-F9C5-49B5-9F18-D1FD904344F9}.Release|x64.Build.0 = Release|Any CPU
 		{A1B8DFFB-F9C5-49B5-9F18-D1FD904344F9}.Release|x86.ActiveCfg = Release|Any CPU
 		{A1B8DFFB-F9C5-49B5-9F18-D1FD904344F9}.Release|x86.Build.0 = Release|Any CPU
+		{0F2748EC-3204-4DBC-9F53-87F49A01852B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F2748EC-3204-4DBC-9F53-87F49A01852B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F2748EC-3204-4DBC-9F53-87F49A01852B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0F2748EC-3204-4DBC-9F53-87F49A01852B}.Debug|x64.Build.0 = Debug|Any CPU
+		{0F2748EC-3204-4DBC-9F53-87F49A01852B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0F2748EC-3204-4DBC-9F53-87F49A01852B}.Debug|x86.Build.0 = Debug|Any CPU
+		{0F2748EC-3204-4DBC-9F53-87F49A01852B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F2748EC-3204-4DBC-9F53-87F49A01852B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F2748EC-3204-4DBC-9F53-87F49A01852B}.Release|x64.ActiveCfg = Release|Any CPU
+		{0F2748EC-3204-4DBC-9F53-87F49A01852B}.Release|x64.Build.0 = Release|Any CPU
+		{0F2748EC-3204-4DBC-9F53-87F49A01852B}.Release|x86.ActiveCfg = Release|Any CPU
+		{0F2748EC-3204-4DBC-9F53-87F49A01852B}.Release|x86.Build.0 = Release|Any CPU
+		{73DDC0CE-2402-49E2-B447-55942E670921}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73DDC0CE-2402-49E2-B447-55942E670921}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73DDC0CE-2402-49E2-B447-55942E670921}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{73DDC0CE-2402-49E2-B447-55942E670921}.Debug|x64.Build.0 = Debug|Any CPU
+		{73DDC0CE-2402-49E2-B447-55942E670921}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{73DDC0CE-2402-49E2-B447-55942E670921}.Debug|x86.Build.0 = Debug|Any CPU
+		{73DDC0CE-2402-49E2-B447-55942E670921}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73DDC0CE-2402-49E2-B447-55942E670921}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73DDC0CE-2402-49E2-B447-55942E670921}.Release|x64.ActiveCfg = Release|Any CPU
+		{73DDC0CE-2402-49E2-B447-55942E670921}.Release|x64.Build.0 = Release|Any CPU
+		{73DDC0CE-2402-49E2-B447-55942E670921}.Release|x86.ActiveCfg = Release|Any CPU
+		{73DDC0CE-2402-49E2-B447-55942E670921}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

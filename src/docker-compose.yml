@@ -1,18 +1,11 @@
 version: '3.4'
 
 services:
-  cheesestore.graph:
-    image: ${DOCKER_REGISTRY-}cheesestoregraph
-    build:
-      context: .
-      dockerfile: CheeseStore.Graph/Dockerfile
-
   cheesestore.store:
     image: ${DOCKER_REGISTRY-}cheesestorestore
     build:
       context: .
       dockerfile: CheeseStore.Store/Dockerfile
-
 
   cheesestore.inventory:
     image: ${DOCKER_REGISTRY-}cheesestoreinventory
@@ -20,3 +13,14 @@ services:
       context: .
       dockerfile: CheeseStore.Inventory/Dockerfile
 
+  cheesestore.graph:
+    image: ${DOCKER_REGISTRY-}cheesestoregraph
+    build:
+      context: .
+      dockerfile: CheeseStore.Graph/Dockerfile
+    environment:
+      - CheeseStore__Graph__Store__BaseAddress=http://cheesestore.store
+      - CheeseStore__Graph__Inventory__BaseAddress=http://cheesestore.inventory
+    depends_on:
+      - cheesestore.store
+      - cheesestore.inventory

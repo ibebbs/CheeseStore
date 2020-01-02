@@ -21,10 +21,13 @@ namespace CheeseStore.Inventory
 
         [HttpPost]
         [ProducesResponseType(typeof(Response), (int)HttpStatusCode.OK)]
-        public Task<IActionResult> Get([FromBody] Request request)
+        public Task<IActionResult> Post([FromBody] Request request)
         {
-            var response = new Response(request.Ids.Select(id => new KeyValuePair<Guid, uint>(id, 0)));
-
+            var response = new Response 
+            { 
+                Available = request.Ids.Select(id => new Available { Id = id, Quantity = 0 }) 
+            };
+            
             return Task.FromResult<IActionResult>(Ok(response));
         }
     }

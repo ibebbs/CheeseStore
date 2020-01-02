@@ -19,6 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="HotChocolate.AspNetCore" Version="10.3.1" />
     <PackageReference Include="HotChocolate.AspNetCore.Playground" Version="10.3.1" />
     <PackageReference Include="HotChocolate.AspNetCore.Voyager" Version="10.3.1" />
@@ -27,6 +28,11 @@
     <PackageReference Include="HotChocolate.Types.Sorting" Version="10.3.1" />
     <PackageReference Include="HotChocolate.Subscriptions.InMemory" Version="10.3.1" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CheeseStore.Inventory.Client\CheeseStore.Inventory.Client.csproj" />
+    <ProjectReference Include="..\CheeseStore.Store.Client\CheeseStore.Store.Client.csproj" />
   </ItemGroup>
 
 </Project>
