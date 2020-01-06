@@ -52,7 +52,7 @@ namespace CheeseStore.Graph
         public static ISchemaBuilder Build()
         {
             return SchemaBuilder.New()
-                .AddQueryType<Query>(
+                .AddQueryType<IQuery>(
                     query => query
                         .Field(f => f.Cheese())
                             .Resolver(context => context.ResolveCheeses()))
