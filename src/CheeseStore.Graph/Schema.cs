@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using HotChocolate;
 using HotChocolate.Resolvers;
+using HotChocolate.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +43,7 @@ namespace CheeseStore.Graph
             return await dataLoader.LoadAsync(context.Parent<Cheese>().Id, context.RequestAborted);
         }
 
-        private static async Task<object> ResolveCheeses(this IResolverContext context)
+        private static async Task<IEnumerable<Cheese>> ResolveCheeses(this IResolverContext context)
         {
             var results = await context.Service<CheeseStore.Store.Client.IStoreClient>().GetAsync();
 
@@ -52,10 +53,10 @@ namespace CheeseStore.Graph
         public static ISchemaBuilder Build()
         {
             return SchemaBuilder.New()
-                .AddQueryType<IQuery>(
-                    query => query
-                        .Field(f => f.Cheese())
-                            .Resolver(context => context.ResolveCheeses()))
+                .AddQueryType(
+                    typeDescriptor => typeDescriptor
+                        .Field("Cheese").Type<IEnumerable<ObjectType<Cheese>>>()
+                            .Resolver(async context => await context.ResolveCheeses()))
                 .AddObjectType<Cheese>(
                     cheese => cheese
                         .Field(f => f.Available)
