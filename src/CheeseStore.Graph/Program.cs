@@ -10,16 +10,8 @@ namespace CheeseStore.Graph
 {
     public class Program
     {
-        private static bool ValidateCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
-        {
-            System.Diagnostics.Debugger.Break();
-
-            return true;
-        }
-
         public static Task Main(string[] args)
         {
-            System.Net.ServicePointManager.ServerCertificateValidationCallback = ValidateCertificate;
             return CreateWebHostBuilder(args).Build().RunAsync();
         }
 
